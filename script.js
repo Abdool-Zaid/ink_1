@@ -13,7 +13,7 @@ canvas.addEventListener("pointermove", async (evt) => {
   if (evt.shiftKey== true) {// trigger goes here
   const pointSize = 10;
     ctx.fillStyle = style.color;
-    ctx.fillRect(evt.pageX, evt.pageY, pointSize, pointSize);
+    ctx.fillRect(evt.pageX, evt.pageY, pointSize, pointSize); // could be a positioning bug here
 
 
 
@@ -34,7 +34,7 @@ canvas.addEventListener("pointermove", async (evt) => {
 });
 
 window.addEventListener("pointerdown", () => {
-  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);// clear screen
 });
 
 // canvas.width = window.innerWidth;  // for fullscreen
