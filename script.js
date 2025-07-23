@@ -10,26 +10,34 @@ function getRandomInt(min, max) {
 }
 
 canvas.addEventListener("pointermove", async (evt) => {
+  if (evt.shiftKey== true) {// trigger goes here
   const pointSize = 10;
-  ctx.fillStyle = style.color;
-  ctx.fillRect(evt.pageX, evt.pageY, pointSize, pointSize);
-  if (move_cnt === 20) {
-    const r = getRandomInt(0, 255);
-    const g = getRandomInt(0, 255);
-    const b = getRandomInt(0, 255);
+    ctx.fillStyle = style.color;
+    ctx.fillRect(evt.pageX, evt.pageY, pointSize, pointSize);
 
-    style = { color: `rgb(${r} ${g} ${b} / 100%)`, diameter: 10 };
-    move_cnt = 0;
-    document.getElementById("div").style.backgroundColor =
-      `rgb(${r} ${g} ${b} / 60%)`;
+
+
+
+    move_cnt += 1; // keep on last line
   }
-  move_cnt += 1;
-  (await presenter).updateInkTrailStartPoint(evt, style);
+  // if (move_cnt === 20) {
+  //   const r = getRandomInt(0, 255);
+  //   const g = getRandomInt(0, 255);
+  //   const b = getRandomInt(0, 255);
+
+  //   style = { color: `rgb(${r} ${g} ${b} / 100%)`, diameter: 10 };
+  //   move_cnt = 0;
+  //   document.getElementById("div").style.backgroundColor =
+  //     `rgb(${r} ${g} ${b} / 60%)`;
+  // }
+  // (await presenter).updateInkTrailStartPoint(evt, style); // circle that follows cursor
 });
 
 window.addEventListener("pointerdown", () => {
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 });
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// canvas.width = window.innerWidth;  // for fullscreen
+// canvas.height = window.innerHeight;
+canvas.width =500;  
+canvas.height = 500;
